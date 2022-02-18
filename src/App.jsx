@@ -2,16 +2,18 @@ import React, { useState, useEffect } from 'react';
 const axios = require('axios');
 
 function Synonyms(props) {
-  const content = props.pr_synonyms.map((item, index) =>
-    <span key={index}>
-      {JSON.stringify(item)}
-    </span>
-  );
+  if (!props.pr_synonyms) {
+    return null
+  }
 
   return (
     <React.Fragment>
       <p>Synonyms:</p>
-      {content}
+      {props.pr_synonyms.map((item, index) =>
+        <span key={index}>
+          {JSON.stringify(item)}
+        </span>
+      )}
     </React.Fragment>
   );
 }
